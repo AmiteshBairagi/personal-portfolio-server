@@ -51,6 +51,7 @@ public class SkillsService {
         try{
             List<Skill> allSkills = new ArrayList<>();
             allSkills = repo.findAll();
+            System.out.println(allSkills);
             return ResponseEntity.status(200).body(allSkills);
         }catch(Exception e){
             return ResponseEntity.status(500).body("Failed to fetch skills");
