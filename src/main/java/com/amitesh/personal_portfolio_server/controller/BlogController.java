@@ -24,6 +24,11 @@ public class BlogController {
         return service.getAllBlogs();
     }
 
+    @GetMapping("/get-blogs-by-category/{category}")
+    public ResponseEntity<?> getBlogsByCategory(@PathVariable String category){
+        return service.getBlogsByCategory(category);
+    }
+
     @PostMapping(value = "/add-blog", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> addBlog(@RequestPart("data") Blog blog,
                                      @RequestPart(value = "image", required = true) MultipartFile image){

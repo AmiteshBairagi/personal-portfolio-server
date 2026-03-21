@@ -52,4 +52,14 @@ public class BlogService {
             return ResponseEntity.status(500).body("Cannot be deleted . something went wromg");
         }
     }
+
+    public ResponseEntity<?> getBlogsByCategory(String category) {
+        try{
+            List<Blog> result = new ArrayList<>();
+            result = repo.findByCategoryIgnoreCase(category);
+            return ResponseEntity.status(200).body(result);
+        }catch(Exception e){
+            return ResponseEntity.status(500).body("Server error");
+        }
+    }
 }
