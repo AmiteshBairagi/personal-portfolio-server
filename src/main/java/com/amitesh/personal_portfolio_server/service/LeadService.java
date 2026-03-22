@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class LeadService {
@@ -22,6 +24,16 @@ public class LeadService {
             return ResponseEntity.status(200).body("Lead Saved");
         }catch(Exception e){
             return ResponseEntity.status(500).body("Lead Cannot be saved , something went wrong");
+        }
+    }
+
+    public ResponseEntity<?> getAllLeads() {
+        try{
+            List<Lead> leads = new ArrayList<>();
+            leads = repo.findAll();
+            return ResponseEntity.status(200).body(leads);
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Cannon fetch leads , something went wrong");
         }
     }
 }
