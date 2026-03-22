@@ -27,9 +27,9 @@ public class SkillsController {
     }
 
 
-    @PutMapping("/update-skill/{skillId}")
-    public ResponseEntity<?> updateSkill(@PathVariable String skillId){
-        return skillsService.updateSkill(skillId);
+    @PutMapping("/update-skill")
+    public ResponseEntity<?> updateSkill(@RequestBody Skill skill){
+        return skillsService.updateSkill(skill);
     }
 
     @DeleteMapping("/delete-skill/{skillId}")

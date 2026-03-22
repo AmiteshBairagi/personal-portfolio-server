@@ -28,11 +28,18 @@ public class SkillsService {
         }
     }
 
-    public ResponseEntity<?> updateSkill(String skillId) {
+    public ResponseEntity<?> updateSkill(Skill skill) {
         try{
-            return null;
+            Skill skillInDb = repo.findById(skill.getId()).orElseThrow(() -> new RuntimeException("skill not found"));
+            skillInDb.setName(skill.getName());
+            skillInDb.setProjects(skill.getProjects());
+            skillInDb.setCategory(skill.getCategory());
+            skillInDb.setYearsOfExperience(skill.getYearsOfExperience());
+            skillInDb.setUpdatedAt(LocalDateTime.now());
+            repo.save(skillInDb);
+            return ResponseEntity.status(200).body("Skill updated successfully");
         }catch(Exception e){
-            return null;
+            return ResponseEntity.status(500).body("Skill cannot be updated, something went wrong");
         }
     }
 
