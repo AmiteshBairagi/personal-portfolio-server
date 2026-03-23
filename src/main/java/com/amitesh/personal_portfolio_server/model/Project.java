@@ -48,7 +48,7 @@ public class Project {
 
     private String teamSize;
 
-    private String image;
+    private String imageUrl;
 
     private String problemStatement;
 
@@ -60,9 +60,6 @@ public class Project {
 
     @Indexed
     private Boolean published = true;
-
-    @Indexed
-    private Integer displayOrder = 0;
 
     @Indexed
     private LocalDateTime createdAt;
