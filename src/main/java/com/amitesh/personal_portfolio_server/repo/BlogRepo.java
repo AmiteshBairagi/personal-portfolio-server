@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface BlogRepo extends MongoRepository<Blog,String> {
     List<Blog> findByCategoryIgnoreCase(String category);
+
+    Blog findBySlug(String slug);
 }

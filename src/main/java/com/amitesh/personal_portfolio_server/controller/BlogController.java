@@ -42,4 +42,9 @@ public class BlogController {
     public ResponseEntity<?> deleteBlog(@PathVariable String id){
         return service.deleteBlog(id);
     }
+
+    @GetMapping("/blog/{slug}")
+    public ResponseEntity<?> fetchBlogBySlug(@PathVariable String slug){
+        return service.fetchBlogBySlug(slug);
+    }
 }

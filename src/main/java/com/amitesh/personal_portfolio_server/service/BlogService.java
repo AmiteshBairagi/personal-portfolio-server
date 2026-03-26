@@ -62,4 +62,13 @@ public class BlogService {
             return ResponseEntity.status(500).body("Server error");
         }
     }
+
+    public ResponseEntity<?> fetchBlogBySlug(String slug) {
+        try{
+            Blog blog = repo.findBySlug(slug);
+            return ResponseEntity.status(200).body(blog);
+        }catch (Exception e){
+            return ResponseEntity.status(500).body("Cannot find blog with the given slug , something went wrong");
+        }
+    }
 }
