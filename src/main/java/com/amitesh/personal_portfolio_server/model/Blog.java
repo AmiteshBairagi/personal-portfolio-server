@@ -56,7 +56,7 @@ public class Blog {
 
     // Date only (as per your payload)
 
-    private LocalDate publishedAt;
+    private LocalDateTime publishedAt;
 
     @NonNull
     private Integer readTime;

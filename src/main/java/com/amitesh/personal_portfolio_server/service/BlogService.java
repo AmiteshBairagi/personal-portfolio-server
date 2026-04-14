@@ -26,7 +26,7 @@ public class BlogService {
         try{
             blog.setCreatedAt(LocalDateTime.now());
             blog.setUpdatedAt(LocalDateTime.now());
-            blog.setPublishedAt(LocalDate.now());
+            blog.setPublishedAt(LocalDateTime.now());
             repo.save(blog);
             return ResponseEntity.status(200).body("Data saved successfully");
         }catch(Exception e){
