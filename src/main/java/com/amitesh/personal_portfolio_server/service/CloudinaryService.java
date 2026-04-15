@@ -21,15 +21,44 @@ public class CloudinaryService {
         ));
     }
 
-    public String upload(MultipartFile file) {
+    public Map upload(MultipartFile file) {
         try {
             Map uploadResult = cloudinary.uploader().upload(
                     file.getBytes(),
                     ObjectUtils.emptyMap()
             );
-            return uploadResult.get("secure_url").toString();
+            return uploadResult; // contains public_id + url
         } catch (IOException e) {
             throw new RuntimeException("Image upload failed");
+        }
+    }
+
+    // ✅ Update (Overwrite existing image)
+    public Map update(MultipartFile file, String publicId) {
+        try {
+            Map uploadResult = cloudinary.uploader().upload(
+                    file.getBytes(),
+                    ObjectUtils.asMap(
+                            "public_id", publicId,
+                            "overwrite", true
+                    )
+            );
+            return uploadResult;
+        } catch (IOException e) {
+            throw new RuntimeException("Image update failed");
+        }
+    }
+
+    // ✅ Delete
+    public String delete(String publicId) {
+        try {
+            Map result = cloudinary.uploader().destroy(
+                    publicId,
+                    ObjectUtils.emptyMap()
+            );
+            return result.get("result").toString(); // "ok"
+        } catch (IOException e) {
+            throw new RuntimeException("Image deletion failed");
         }
     }
 }

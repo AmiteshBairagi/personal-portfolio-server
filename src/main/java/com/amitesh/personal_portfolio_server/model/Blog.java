@@ -54,6 +54,8 @@ public class Blog {
 
     private String imageUrl;
 
+    private String imagePublicId;
+
     // Date only (as per your payload)
 
     private LocalDateTime publishedAt;
