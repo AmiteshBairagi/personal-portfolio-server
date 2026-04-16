@@ -50,6 +50,8 @@ public class Project {
 
     private String imageUrl;
 
+    private String imagePublicId;
+
     private String problemStatement;
 
     private String solution;
