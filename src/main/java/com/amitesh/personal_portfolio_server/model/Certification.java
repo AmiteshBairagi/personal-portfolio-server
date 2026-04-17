@@ -18,27 +18,37 @@ public class Certification {
     @Id
     private String id;
 
+    @NonNull
     private String title;
 
+    @NonNull
     private String issuer;
 
+    @NonNull
     private String date;
 
+    @NonNull
     private String credentialId;
 
+    @NonNull
     private String imageUrl;
+
+    private String imagePublicId;
 
     private String description;
 
+    @NonNull
     private List<String> skills;
 
+    @NonNull
     private String verificationUrl;
 
     private Boolean featured = false;
 
+    @NonNull
     private String validUntil;
 
-    private String level; // Could be enum (see below)
+    private String level;
 
     private String examScore;
 
