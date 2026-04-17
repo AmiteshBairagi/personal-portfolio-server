@@ -1,5 +1,6 @@
 package com.amitesh.personal_portfolio_server.controller;
 
+import com.amitesh.personal_portfolio_server.dto.ProjectUpdateRequest;
 import com.amitesh.personal_portfolio_server.model.Project;
 import com.amitesh.personal_portfolio_server.service.CloudinaryService;
 import com.amitesh.personal_portfolio_server.service.ProjectService;
@@ -44,8 +45,11 @@ public class ProjectController {
         return projectService.deleteProject(projectId);
     }
 
-    @PutMapping("/update-project")
-    public ResponseEntity<?> updateProject(@RequestBody Project project){
-        return projectService.updateProject(project);
+    @PutMapping(value = "/update-project/{projectId}" , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<?> updateProject(@RequestPart("body") ProjectUpdateRequest project ,
+                                           @RequestPart(value = "image" , required = false) MultipartFile image,
+                                           @PathVariable String projectId){
+
+        return projectService.updateProject(project,image,projectId);
     }
 }
